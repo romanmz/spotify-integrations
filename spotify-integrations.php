@@ -12,3 +12,4 @@ if( !defined( 'ABSPATH' ) ) exit;
 
 // Include files
 require_once 'settings-page.php';
+require_once 'tracks-list.php';
