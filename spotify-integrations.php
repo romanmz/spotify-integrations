@@ -7,4 +7,8 @@ Author URI: https://romanmartinez.me/
 Version: 1.0
 */
 
-defined( 'ABSPATH' ) or die( 'No direct access allowed' );
+// Exit if accessed directly
+if( !defined( 'ABSPATH' ) ) exit;
+
+// Include files
+require_once 'settings-page.php';
