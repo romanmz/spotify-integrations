@@ -19,6 +19,7 @@ class WPSpotifyTracks {
 		// internal settings
 		'recursive' => true,
 		'only_unavailable' => false,
+		'output' => 'rows',
 	];
 	
 	
@@ -144,6 +145,20 @@ class WPSpotifyTracks {
 		if( $settings['only_unavailable'] && $track->track->is_playable ) {
 			return;
 		}
+		switch( $settings['output'] ) {
+			case 'links':
+				$this->output_track_link( $track );
+				break;
+			default:
+				$this->output_track_row( $track );
+				break;
+		}
+	}
+	private function output_track_link( $track ) {
+		$url = $track->track->external_urls->spotify;
+		echo "{$url}\n";
+	}
+	private function output_track_row( $track ) {
 		$name = $track->track->name;
 		$artists = array_map( function($artist){ return $artist->name; }, $track->track->artists );
 		$artists = implode( ', ', $artists );
